@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>20 · 总结</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:var(--sp-2xl);text-align:center;background:radial-gradient(ellipse 800px 500px at 50% 45%,rgba(217,119,75,0.04) 0%,transparent 70%),var(--bg-page);}
+  .quote-block{margin-bottom:var(--sp-xl);max-width:1000px;}
+  .quote-main{font-family:"Source Serif 4","Newsreader",serif;font-size:68px;font-weight:500;line-height:1.35;color:var(--text-primary);letter-spacing:-.005em;margin:0;}
+  .quote-main .accent{color:var(--accent);}
+  .rule-line{width:120px;height:1px;background:var(--accent);margin:var(--sp-l) auto;opacity:.45;}
+  .summary-points{display:flex;gap:var(--sp-l);margin-bottom:var(--sp-xl);}
+  .point{font-family:-apple-system,sans-serif;font-size:var(--fs-body);color:var(--text-secondary);padding:var(--sp-s) var(--sp-m);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);}
+  .thank-you{font-family:"Source Serif 4","Newsreader",serif;font-size:48px;font-weight:300;color:var(--text-primary);letter-spacing:.03em;}
+  .thank-en{font-family:"Newsreader",serif;font-size:var(--fs-body);color:var(--text-muted);margin-top:var(--sp-xs);font-style:italic;}
+  .footer-info{position:absolute;bottom:64px;left:var(--sp-2xl);right:var(--sp-2xl);display:flex;justify-content:space-between;font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em;}
+  .qa-tag{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);margin-top:var(--sp-l);letter-spacing:.08em;}
+</style></head>
+<body>
+<div class="slide">
+  <div class="quote-block">
+    <p class="quote-main">让 <span class="accent">AI</span> 替你去记忆和执行<br>你可以忘，<span class="accent">AI 不会忘</span></p>
+  </div>
+  <div class="rule-line"></div>
+  <div class="summary-points">
+    <div class="point">把项目的隐性知识变成显性规则</div>
+    <div class="point">让 Claude Code 成为懂你项目的专属开发专家</div>
+    <div class="point">基建是弹药，不绑定枪</div>
+  </div>
+  <div class="thank-you">谢谢</div>
+  <div class="thank-en">Thank You</div>
+  <div class="qa-tag">Q &amp; A</div>
+  <div class="footer-info">
+    <span>数字赛场大研发团队</span>
+    <span>2026 年 6 月 · 内部技术分享</span>
+  </div>
+</div>
+<script>if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform='scale('+s+')';}fit();window.addEventListener('resize',fit);})();}</script>
+</body>
+</html>

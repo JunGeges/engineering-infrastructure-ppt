@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>16 · 三档开发模式对比</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;padding:var(--sp-l) var(--sp-2xl) 44px;display:flex;flex-direction:column}
+  .header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-m)}
+  .section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em}
+  .section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0}
+
+  .col-header{display:grid;grid-template-columns:180px 1fr 1fr 1fr;gap:10px;margin-bottom:4px;padding:0 var(--sp-s)}
+  .col-header span{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);text-align:center;padding-bottom:10px;letter-spacing:.05em}
+  .col-h-dim{color:var(--text-muted)}
+  .col-h-old{border-bottom:2px solid var(--border);color:var(--text-muted)}
+  .col-h-mid{border-bottom:2px solid #D4A574;color:#B8865A}
+  .col-h-new{border-bottom:2px solid var(--accent);color:var(--accent)}
+
+  .table-body{display:flex;flex-direction:column;gap:8px;flex:1;overflow:hidden}
+  .table-row{display:grid;grid-template-columns:180px 1fr 1fr 1fr;gap:10px;align-items:center;min-height:54px;padding:6px var(--sp-s);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md)}
+  .row-label{font-family:-apple-system,sans-serif;font-size:var(--fs-small);font-weight:500;color:var(--text-primary);line-height:1.3}
+  .cell{font-family:-apple-system,sans-serif;font-size:var(--fs-small);text-align:center;line-height:1.4;padding:2px 4px}
+  .cell-old{color:var(--text-muted)}
+  .cell-mid{color:#9E7A5E}
+  .cell-new{color:var(--text-primary);font-weight:500}
+  .cell-new em{font-style:normal;color:var(--accent);font-weight:600}
+
+  .summary-bar{display:flex;align-items:center;justify-content:center;gap:var(--sp-m);margin-top:var(--sp-xs);padding:var(--sp-s) var(--sp-l);background:var(--bg-warm);border-radius:var(--radius-md);font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-secondary)}
+  .summary-bar .accent-text{color:var(--accent);font-weight:600}
+
+  .slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+</style></head>
+<body>
+<div class="slide">
+  <div class="header"><span class="section-num">16 · COMPARE</span><h2 class="section-title">三种开发模式对比</h2></div>
+
+  <div class="col-header">
+    <span class="col-h-dim">对比维度</span>
+    <span class="col-h-old">传统开发</span>
+    <span class="col-h-mid">AI 开发（无基建）</span>
+    <span class="col-h-new">AI Native（有基建）</span>
+  </div>
+
+  <div class="table-body">
+    <div class="table-row">
+      <span class="row-label">项目知识</span>
+      <span class="cell cell-old">在人脑里，离职即流失</span>
+      <span class="cell cell-mid">AI 能写代码但不懂项目<br>每次都要从零解释</span>
+      <span class="cell cell-new"><em>规则文件化</em>，AI 自带项目全景</span>
+    </div>
+    <div class="table-row">
+      <span class="row-label">代码规范</span>
+      <span class="cell cell-old">靠 CR 人工纠正</span>
+      <span class="cell cell-mid">AI 输出通用代码<br>不遵守项目约定的命名/路由</span>
+      <span class="cell cell-new"><em>自动遵守</em>命名、路由、提示规范</span>
+    </div>
+    <div class="table-row">
+      <span class="row-label">踩坑防护</span>
+      <span class="cell cell-old">踩过才知道</span>
+      <span class="cell cell-mid">同样的坑反复踩<br>每次都要重新纠正 AI</span>
+      <span class="cell cell-new">35 条错题本，<em>AI 主动规避</em></span>
+    </div>
+    <div class="table-row">
+      <span class="row-label">接口对接</span>
+      <span class="cell cell-old">翻网页 → 手写 → 试错</span>
+      <span class="cell cell-mid">能写请求，但参数凭记忆<br>字段名经常不对</span>
+      <span class="cell cell-new">AI 读 Spec，<em>参数精确匹配</em></span>
+    </div>
+    <div class="table-row">
+      <span class="row-label">设计还原</span>
+      <span class="cell cell-old">肉眼估算间距颜色</span>
+      <span class="cell cell-mid">能写样式但随机发挥<br>间距颜色不精准</span>
+      <span class="cell cell-new">AI 读 .pen，<em>提取精确设计值</em></span>
+    </div>
+    <div class="table-row">
+      <span class="row-label">新人上手</span>
+      <span class="cell cell-old">1-2 周看代码 + 问人</span>
+      <span class="cell cell-mid">AI 能解释代码<br>但不了解项目约定和坑位</span>
+      <span class="cell cell-new">AI <em>自带全套项目知识</em></span>
+    </div>
+    <div class="table-row">
+      <span class="row-label">知识传承</span>
+      <span class="cell cell-old">口口相传，容易断档</span>
+      <span class="cell cell-mid">每次对话独立<br>没有记忆累积</span>
+      <span class="cell cell-new"><em>规则持久沉淀</em>，越用越强</span>
+    </div>
+  </div>
+
+  <div class="summary-bar"><span class="accent-text">裸 AI 只是工具 · AI Native 才是团队</span> — 基建把 AI 从通用助手，训练成懂你项目的专属专家</div>
+  <div class="slide-number">16</div>
+</div>
+<script>if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform="scale("+s+")"}fit();window.addEventListener("resize",fit)})()}</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>18 · 演进路线</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;padding:var(--sp-xl) var(--sp-2xl);display:flex;flex-direction:column;justify-content:center;}
+  .header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-xl);}
+  .section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em;}
+  .section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0;}
+  .timeline{display:flex;align-items:stretch;gap:16px;position:relative;}
+  .timeline::before{content:'';position:absolute;top:50%;left:80px;right:80px;height:1px;background:var(--border);}
+  .phase-card{flex:1;display:flex;flex-direction:column;align-items:center;padding:var(--sp-l) var(--sp-s);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);position:relative;z-index:1;}
+  .phase-week{font-family:"Source Serif 4",serif;font-size:var(--fs-sub);font-weight:600;color:var(--accent);margin-bottom:var(--sp-s);}
+  .phase-items{font-family:-apple-system,sans-serif;font-size:var(--fs-body);color:var(--text-secondary);line-height:2;text-align:center;}
+  .phase-items span{display:block;}
+  .phase-card.filled{background:var(--accent-subtle);border-color:var(--accent-light);}
+  .phase-card.filled .phase-week{color:var(--accent-warm);}
+  .slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em;}
+</style></head>
+<body>
+<div class="slide">
+  <div class="header">
+    <span class="section-num">18 · ROADMAP</span>
+    <h2 class="section-title">演进路线</h2>
+  </div>
+  <div class="timeline">
+    <div class="phase-card">
+      <div class="phase-week">第一周</div>
+      <div class="phase-items"><span>coding-standards.md</span><span>project-overview.md</span></div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-week">第二周</div>
+      <div class="phase-items"><span>global-api.md</span><span>apifox.md</span></div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-week">第三周</div>
+      <div class="phase-items"><span>开始记录 mistakes.md</span><span>AI 犯错纠正后自动写入</span></div>
+    </div>
+    <div class="phase-card filled">
+      <div class="phase-week">一个月</div>
+      <div class="phase-items"><span>design.md</span><span>dependency-map.md</span></div>
+    </div>
+    <div class="phase-card filled">
+      <div class="phase-week">持续</div>
+      <div class="phase-items"><span>decisions.md</span><span>每遇架构决策追加一条</span></div>
+    </div>
+  </div>
+  <div class="slide-number">18</div>
+</div>
+<script>if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform='scale('+s+')';}fit();window.addEventListener('resize',fit);})();}</script>
+</body>
+</html>

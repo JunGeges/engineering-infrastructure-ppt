@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- @description 一句话讲清楚 -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>02 · 一句话讲清楚</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Source+Serif+4:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:var(--sp-2xl);background:radial-gradient(ellipse 900px 600px at 50% 35%,rgba(217,119,75,0.04) 0%,transparent 70%),radial-gradient(ellipse 400px 300px at 70% 80%,rgba(217,119,75,0.02) 0%,transparent 60%),var(--bg-page)}
+  .nav-back{position:absolute;top:var(--sp-l);left:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+  .nav-back::before{content:"90";margin-right:var(--sp-xs)}
+  .quote-block{max-width:1300px;text-align:center;margin-bottom:var(--sp-l)}
+  .quote-mark{font-family:"Source Serif 4","Newsreader",serif;font-size:140px;line-height:0;color:var(--accent);opacity:.25;margin-bottom:var(--sp-m);display:block}
+  .quote-main{font-family:"Source Serif 4","Newsreader",serif;font-size:76px;font-weight:500;line-height:1.35;color:var(--text-primary);letter-spacing:-.005em;margin:0}
+  .quote-main .highlight-text{color:var(--accent);font-weight:600}
+  .quote-explanation{margin-top:var(--sp-l);font-family:-apple-system,sans-serif;font-size:var(--fs-sub);color:var(--text-secondary);line-height:1.9;letter-spacing:.02em}
+  .quote-explanation .divider-dot{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent);margin:0 var(--sp-s);vertical-align:middle;opacity:.4}
+  .footer-rule{width:60px;height:1px;background:var(--border);margin:var(--sp-l) auto 0}
+  .slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="nav-back">目录</div>
+  <div class="quote-block">
+    <span class="quote-mark">&ldquo;</span>
+    <p class="quote-main">我们招了一个<br>永远不会忘记项目规矩的<br><span class="highlight-text">&ldquo;AI 程序员&rdquo;</span></p>
+  </div>
+  <div class="quote-explanation">它的入职培训文档就放在项目仓库里<span class="divider-dot"></span>9 个规则文件，一份错题本，零额外成本</div>
+  <div class="footer-rule"></div>
+  <div class="slide-number">02 / 06</div>
+</div>
+<script>if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform="scale("+s+")";}fit();window.addEventListener("resize",fit);})();}</script>
+</body>
+</html>

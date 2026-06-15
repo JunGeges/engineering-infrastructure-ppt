@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>05 · /auto-dev 自动拦截</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;padding:var(--sp-l) var(--sp-2xl) 44px;display:flex;flex-direction:column}
+  .header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s)}
+  .section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em}
+  .section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0}
+  .subtitle{font-family:"Source Serif 4",serif;font-size:var(--fs-body);color:var(--text-secondary);margin-top:2px}
+
+  /* 列容器：5列 + 4箭头，每列自己包 stage + 连接线 + intercept */
+  .columns{display:flex;gap:0;flex:1}
+  .col{flex:1;display:flex;flex-direction:column;gap:0}
+  .arrow-col{flex:0 0 36px;display:flex;align-items:center;justify-content:center;color:var(--border);font-size:20px;padding-top:var(--sp-s)}
+  .stage{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-s) var(--sp-xs);display:flex;flex-direction:column;align-items:center;text-align:center;flex-shrink:0}
+  .stage-num{font-family:"Source Serif 4",serif;font-size:48px;font-weight:600;color:var(--accent);line-height:1;margin-bottom:2px}
+  .stage-name{font-family:-apple-system,sans-serif;font-size:var(--fs-small);font-weight:600;color:var(--text-primary);margin-bottom:2px}
+  .stage-desc{font-family:-apple-system,sans-serif;font-size:13px;color:var(--text-muted);line-height:1.4}
+  .stage-tags{display:flex;gap:4px;margin-top:6px}
+  .stage-tag{font-family:-apple-system,sans-serif;font-size:10px;color:var(--text-muted);background:var(--bg-warm);padding:2px 6px;border-radius:99px}
+  .stage-guard{font-family:-apple-system,sans-serif;font-size:10px;color:var(--accent);font-weight:600;letter-spacing:.06em;margin-top:4px;padding:2px 8px;background:var(--accent-subtle);border-radius:99px}
+  .stage-break{font-family:-apple-system,sans-serif;font-size:10px;color:#C56B3F;font-weight:600;letter-spacing:.04em;margin-top:4px;padding:2px 8px;background:#FFF5EF;border:1px solid rgba(217,119,75,0.25);border-radius:99px}
+  /* 连接线 */
+  .conn{display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:4px 0}
+  .conn-line{width:3px;height:10px;background:var(--accent);border-radius:2px}
+  /* 拦截卡片 */
+  .intercept-card{flex:1;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-s) var(--sp-m);display:flex;flex-direction:column;margin-top:2px}
+  .intercept-badge{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);margin-bottom:var(--sp-s);display:flex;align-items:center;gap:6px}
+  .intercept-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  .intercept-problem{font-family:"Source Serif 4",serif;font-size:var(--fs-body);font-weight:500;color:var(--text-primary);margin:0 0 4px 0}
+  .intercept-cause{font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-muted);margin-bottom:var(--sp-s);line-height:1.4}
+  .intercept-divider{height:1px;background:var(--border);margin:var(--sp-xs) 0}
+  .intercept-fix-label{font-family:-apple-system,sans-serif;font-size:12px;color:var(--accent);letter-spacing:.04em;margin-bottom:4px}
+  .intercept-fix{font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-primary);line-height:1.5;font-weight:500}
+  .slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+</style></head>
+<body>
+<div class="slide">
+  <div class="header"><span class="section-num">05 · FLOW</span><h2 class="section-title">/auto-dev — 五阶段敏捷开发引擎</h2></div>
+  <p class="subtitle">每个阶段有明确的输入/输出和断点检查 · 吸收 OpenSpec SDD 思维模型</p>
+
+  <!-- 列容器：每个阶段一列，上下天然对齐 -->
+  <div class="columns">
+    <!-- 列 1：阶段一 + 拦截卡 -->
+    <div class="col">
+      <div class="stage">
+        <div class="stage-num">一</div><div class="stage-name">任务获取</div>
+        <div class="stage-desc">读 TAPD 需求 → 检查工作区洁净<br>→ 建分支 → 改状态为 developing</div>
+        <div class="stage-tags"><span class="stage-tag">TAPD</span><span class="stage-tag">git</span></div>
+        <div class="stage-guard">自动守卫 ↓</div>
+      </div>
+      <div class="conn"><span class="conn-line"></span></div>
+      <div class="intercept-card">
+        <div class="intercept-badge"><span class="dot"></span>阶段一 · 任务获取</div>
+        <h3 class="intercept-problem">新人 / 老代码上手慢</h3>
+        <p class="intercept-cause">新需求不知道改哪里，项目知识口口相传。工作区不干净就开干，分支命名混乱。</p>
+        <hr class="intercept-divider">
+        <span class="intercept-fix-label">自动拦截</span>
+        <span class="intercept-fix">自动拉取 TAPD 需求详情 + 设计稿 + 接口文档；git status 检测工作区洁净度；按 parent_id 自动建分支。</span>
+      </div>
+    </div>
+    <div class="arrow-col">&rarr;</div>
+    <!-- 列 2：阶段二（无拦截） -->
+    <div class="col">
+      <div class="stage">
+        <div class="stage-num">二</div><div class="stage-name">Mini-Spec</div>
+        <div class="stage-desc">按策略读 rules/ 规范 + 勘查源码<br>→ 输出 Design + Tasks + DoD</div>
+        <div class="stage-tags"><span class="stage-tag">mistakes</span><span class="stage-tag">design</span><span class="stage-tag">apifox</span></div>
+        <div class="stage-break">⚠️ 断点 1 · 用户确认方案</div>
+      </div>
+    </div>
+    <div class="arrow-col">&rarr;</div>
+    <!-- 列 3：阶段三 + 拦截卡 -->
+    <div class="col">
+      <div class="stage">
+        <div class="stage-num">三</div><div class="stage-name">静默编码</div>
+        <div class="stage-desc">按 Tasks 逐条实现<br>套全部规范 + 查错题本避险</div>
+        <div class="stage-tags"><span class="stage-tag">Apifox</span><span class="stage-tag">mistakes</span></div>
+        <div class="stage-guard">自动守卫 ↓</div>
+      </div>
+      <div class="conn"><span class="conn-line"></span></div>
+      <div class="intercept-card">
+        <div class="intercept-badge"><span class="dot"></span>阶段三 · 静默编码</div>
+        <h3 class="intercept-problem">Bug 反复踩</h3>
+        <p class="intercept-cause">同一个坑不同人反复踩，35 条教训散落人脑。接口参数凭记忆写，字段名经常不对。</p>
+        <hr class="intercept-divider">
+        <span class="intercept-fix-label">自动拦截</span>
+        <span class="intercept-fix">编码前已注入所有规范文件意识；先查 mistakes.md 规避已知坑位；接口参数从 Apifox Spec 精确匹配。</span>
+      </div>
+    </div>
+    <div class="arrow-col">&rarr;</div>
+    <!-- 列 4：阶段四 + 拦截卡 -->
+    <div class="col">
+      <div class="stage">
+        <div class="stage-num">四</div><div class="stage-name">自检验收</div>
+        <div class="stage-desc">逐条对照 DoD 自检<br>→ 发现 ❌ 立即修复 → 全 ✅ 后汇报</div>
+        <div class="stage-tags"><span class="stage-tag">DoD</span><span class="stage-tag">review</span></div>
+        <div class="stage-break">⚠️ 断点 2 · IDE 人工验证</div>
+      </div>
+      <div class="conn"><span class="conn-line"></span></div>
+      <div class="intercept-card">
+        <div class="intercept-badge"><span class="dot"></span>阶段四 · 自检验收</div>
+        <h3 class="intercept-problem">代码风格割裂</h3>
+        <p class="intercept-cause">路由/提示/事件清理/颜色/间距 — 每个人写法不同，CR 靠人眼扫。</p>
+        <hr class="intercept-divider">
+        <span class="intercept-fix-label">自动拦截</span>
+        <span class="intercept-fix">DoD 清单逐条自检：异步判空、sub/cancel 成对、Vant Dialog 三步走、安全区、无 Lorem Ipsum。发现 ❌ 立即修复，直到全 ✅。</span>
+      </div>
+    </div>
+    <div class="arrow-col">&rarr;</div>
+    <!-- 列 5：阶段五（无拦截） -->
+    <div class="col">
+      <div class="stage">
+        <div class="stage-num">五</div><div class="stage-name">闭环沉淀</div>
+        <div class="stage-desc">commit → CHANGELOG → 自审查<br>→ 联动沉淀 → ADR → TAPD 闭环</div>
+        <div class="stage-tags"><span class="stage-tag">Git</span><span class="stage-tag">ADR</span><span class="stage-tag">TAPD</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-number">05</div>
+</div>
+<script>if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform="scale("+s+")"}fit();window.addEventListener("resize",fit)})()}</script>
+</body>
+</html>

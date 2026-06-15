@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>17 · 5 分钟 Copy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;padding:var(--sp-xl) var(--sp-2xl);display:flex;flex-direction:column;justify-content:center;}
+  .header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-xl);}
+  .section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em;}
+  .section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0;}
+  .steps{display:flex;align-items:flex-start;gap:var(--sp-l);}
+  .step-card{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--sp-l);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);}
+  .step-num{font-family:"Source Serif 4",serif;font-size:96px;font-weight:600;color:var(--accent);line-height:1;margin-bottom:var(--sp-s);}
+  .step-action{font-family:-apple-system,sans-serif;font-size:var(--fs-sub);font-weight:500;color:var(--text-primary);margin-bottom:var(--sp-s);}
+  .step-result{font-family:-apple-system,sans-serif;font-size:var(--fs-body);color:var(--text-secondary);line-height:1.6;}
+  .connector{display:flex;align-items:center;justify-content:center;font-family:"Newsreader",serif;font-size:var(--fs-sub);color:var(--accent);padding-top:100px;min-width:40px;}
+  .note-box{margin-top:var(--sp-xl);padding:var(--sp-s) var(--sp-m);background:var(--bg-warm);border:1px solid var(--border);border-radius:var(--radius-md);font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-secondary);line-height:1.7;text-align:center;}
+  .note-box strong{color:var(--accent);font-weight:600;}
+  .slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em;}
+</style></head>
+<body>
+<div class="slide">
+  <div class="header">
+    <span class="section-num">17 · START</span>
+    <h2 class="section-title">5 分钟 Copy 到你的项目</h2>
+  </div>
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-action">复制 .claude/ 目录结构</div>
+      <div class="step-result">创建 CLAUDE.md<br>一句话描述项目 + 指向规则文件</div>
+    </div>
+    <div class="connector">&rarr;</div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-action">写第一版规范</div>
+      <div class="step-result">创建 coding-standards.md<br>你的编码规矩、命名、路由约定</div>
+    </div>
+    <div class="connector">&rarr;</div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-action">开干 + 持续沉淀</div>
+      <div class="step-result">边踩坑边补 mistakes.md<br>AI 每次犯错纠正后自动写入</div>
+    </div>
+  </div>
+  <div class="note-box"><strong>模型无关：</strong>规则是纯 Markdown 文件。今天用 Claude Code 驱动，明天用 GPT-5 + Cursor 同样生效。基建是弹药，不绑定枪。</div>
+  <div class="slide-number">17</div>
+</div>
+<script>if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform='scale('+s+')';}fit();window.addEventListener('resize',fit);})();}</script>
+</body>
+</html>

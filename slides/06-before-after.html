@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- @description 开发体验对比 -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>06 · 开发体验对比</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&amp;family=Source+Serif+4:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;padding:var(--sp-2xl) var(--sp-2xl) var(--sp-xl);background:radial-gradient(ellipse 500px 400px at 25% 20%,rgba(155,155,155,0.03) 0%,transparent 70%),radial-gradient(ellipse 700px 500px at 75% 80%,rgba(217,119,75,0.035) 0%,transparent 70%),var(--bg-page)}
+  .header{margin-bottom:var(--sp-l)}
+  .section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em;margin-bottom:var(--sp-s)}
+  .section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0}
+  .comparison-container{display:flex;gap:0;max-width:1600px;position:relative}
+  .comparison-container::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--border);transform:translateX(-50%)}
+  .column{flex:1;padding-right:var(--sp-xl)}
+  .column:last-child{padding-right:0;padding-left:var(--sp-xl)}
+  .col-header{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-sub);font-weight:500;margin:0 0 var(--sp-m) 0;letter-spacing:-.005em}
+  .col-header.before{color:var(--text-muted)}
+  .col-header.after{color:var(--accent)}
+  .compare-row{display:flex;align-items:flex-start;gap:var(--sp-s);padding:var(--sp-s) 0;border-bottom:1px solid var(--border)}
+  .compare-row:last-of-type{border-bottom:none}
+  .row-marker{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:10px}
+  .column.before-col .row-marker{background:var(--border)}
+  .column.after-col .row-marker{background:var(--accent)}
+  .row-text{font-family:-apple-system,sans-serif;font-size:var(--fs-body);line-height:1.7;margin:0;flex:1}
+  .column.before-col .row-text{color:var(--text-muted)}
+  .column.after-col .row-text{color:var(--text-primary)}
+  .row-text em{font-style:normal;color:var(--accent);font-weight:500}
+  .slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header"><div class="section-num">06 · COMPARE</div><h1 class="section-title">开发体验对比</h1></div>
+  <div class="comparison-container">
+    <div class="column before-col">
+      <h2 class="col-header before">以前</h2>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">翻找参照页 &#8594; 试错接口</p></div>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">看代码靠猜 &#8594; 项目知识在口口相传</p></div>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">Bug 靠人眼扫 &#8594; 同类错误反复出现</p></div>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">翻 Apifox 网页 &#8594; 手写请求参数</p></div>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">肉眼估算间距颜色 &#8594; 还原度看运气</p></div>
+    </div>
+    <div class="column after-col">
+      <h2 class="col-header after">现在</h2>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">AI 自动找参照、查接口、<em>套规范</em></p></div>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">AI 先查<em>错题本</em>，自动规避已知坑</p></div>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">AI <em>10 维度</em>自动扫描 + 人工复核</p></div>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">AI 直接读 <em>OpenAPI Spec</em>，生成调用代码</p></div>
+      <div class="compare-row"><div class="row-marker"></div><p class="row-text">AI 从 <em>.pen 文件</em>提取精确设计数值</p></div>
+    </div>
+  </div>
+  <div class="slide-number">06</div>
+</div>
+<script>if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform="scale("+s+")";}fit();window.addEventListener("resize",fit);})();}</script>
+</body>
+</html>

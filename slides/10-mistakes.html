@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>10 · 错题本机制</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+.slide{width:1920px;height:1080px;position:relative;padding:var(--sp-xl) var(--sp-2xl);display:flex;flex-direction:column}
+.header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-l)}
+.section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em}
+.section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0}
+.section-sub{margin-left:auto;font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-muted);letter-spacing:.04em}
+.split-layout{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-l);flex:1;align-items:stretch}
+.quote-area{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-l);display:flex;flex-direction:column;justify-content:center;position:relative}
+.quote-mark{font-family:"Source Serif 4","Newsreader",serif;font-size:120px;color:var(--accent);opacity:.15;position:absolute;top:20px;left:32px;line-height:1;user-select:none}
+.quote-text{font-family:"Source Serif 4","Newsreader",serif;font-size:40px;font-weight:450;line-height:1.5;color:var(--text-primary);letter-spacing:.01em;max-width:680px;position:relative;z-index:1}
+.quote-text .highlight{color:var(--accent);font-weight:500}
+.quote-attribution{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);margin-top:var(--sp-m);letter-spacing:.06em;display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.quote-attribution .line{width:32px;height:1px;background:var(--border)}
+.categories-area{display:flex;flex-direction:column;gap:8px;justify-content:center}
+.category-row{display:flex;align-items:center;gap:var(--sp-s);padding:10px 16px;border-radius:var(--radius-sm);font-family:-apple-system,sans-serif}
+.category-row:nth-child(odd){background:var(--bg-card);border:1px solid var(--border)}
+.category-row:nth-child(even){background:transparent}
+.cat-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cat-name{font-size:var(--fs-body);font-weight:500;color:var(--text-primary);letter-spacing:.02em}
+.cat-count{margin-left:auto;font-family:"Source Serif 4",serif;font-size:28px;font-weight:600;color:var(--accent);letter-spacing:-.01em}
+.cat-unit{font-family:-apple-system,sans-serif;font-size:14px;font-weight:400;color:var(--text-muted);margin-left:4px}
+.footnote{text-align:center;font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-muted);letter-spacing:.06em;border-top:1px solid var(--border);padding-top:var(--sp-s);margin-top:var(--sp-s)}
+.slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+.category-row:hover{background:var(--accent-subtle)!important;border-color:var(--accent)!important;transition:all .2s ease}
+</style>
+</head>
+<body>
+<div class="slide">
+<div class="header"><span class="section-num">10 · MISTAKES</span><h2 class="section-title">错题本：同一坑不踩第二次</h2><span class="section-sub">35 条教训 · 8 大分类</span></div>
+<div class="split-layout">
+<div class="quote-area"><div class="quote-mark">“</div><div class="quote-text">每次 AI <span class="highlight">犯错被纠正</span> 后，<br>教训自动写入 <span class="highlight">mistakes.md</span>，<br>后续 AI <span class="highlight">自动规避</span> 同一类问题。</div><div class="quote-attribution"><span class="line"></span>不再犯两次相同的错误</div></div>
+<div class="categories-area">
+<div class="category-row"><span class="cat-dot" style="background:#D9774B"></span><span class="cat-name">UI 渲染与交互</span><span class="cat-count">4<span class="cat-unit">条</span></span></div>
+<div class="category-row"><span class="cat-dot" style="background:#6B8F71"></span><span class="cat-name">小程序 API 滥用</span><span class="cat-count">2<span class="cat-unit">条</span></span></div>
+<div class="category-row"><span class="cat-dot" style="background:#D4A84B"></span><span class="cat-name">事件与生命周期</span><span class="cat-count">1<span class="cat-unit">条</span></span></div>
+<div class="category-row"><span class="cat-dot" style="background:#C96B6B"></span><span class="cat-name">JS 语法与 WXML 限制</span><span class="cat-count">2<span class="cat-unit">条</span></span></div>
+<div class="category-row"><span class="cat-dot" style="background:#6B7FCF"></span><span class="cat-name">API 调用与路径规范</span><span class="cat-count">6<span class="cat-unit">条</span></span></div>
+<div class="category-row"><span class="cat-dot" style="background:#7BBF8F"></span><span class="cat-name">工程流程与交付规范</span><span class="cat-count">11<span class="cat-unit">条</span></span></div>
+<div class="category-row"><span class="cat-dot" style="background:#B88B6B"></span><span class="cat-name">第三方组件使用</span><span class="cat-count">5<span class="cat-unit">条</span></span></div>
+<div class="category-row"><span class="cat-dot" style="background:#C58B9F"></span><span class="cat-name">组件通信与生命周期</span><span class="cat-count">4<span class="cat-unit">条</span></span></div>
+</div>
+</div>
+<div class="footnote">35 条强制规则 · 8 大分类 · 每次修改代码前 AI 自动读取</div>
+<div class="slide-number">10</div>
+</div>
+<script>
+if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform="scale("+s+")"}fit();window.addEventListener("resize",fit)})()}
+</script>
+</body>
+</html>

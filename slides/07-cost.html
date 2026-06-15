@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>07 · 性价比分析</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;padding:var(--sp-l) var(--sp-2xl) 44px;display:flex;flex-direction:column}
+  .header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-m)}
+  .section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em}
+  .section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0}
+  .section-sub{margin-left:auto;font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-muted);letter-spacing:.04em}
+  .hero-area{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--sp-m) 0 var(--sp-s)}
+  .hero-number{font-family:"Source Serif 4","Newsreader",serif;font-size:120px;font-weight:600;color:var(--accent);line-height:1;letter-spacing:-.03em}
+  .hero-label{font-family:-apple-system,sans-serif;font-size:var(--fs-sub);color:var(--text-secondary);margin-top:var(--sp-xs);letter-spacing:.08em;font-weight:400}
+  .benefits-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-m);margin-bottom:var(--sp-s)}
+  .benefit-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-m) var(--sp-l);display:flex;flex-direction:column;align-items:flex-start;transition:border-color .3s}
+  .benefit-icon{width:48px;height:48px;border-radius:var(--radius-sm);background:var(--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-s);font-family:"Source Serif 4",serif;font-size:24px;font-weight:600;color:var(--accent)}
+  .benefit-title{font-family:"Source Serif 4",serif;font-size:var(--fs-body);font-weight:600;color:var(--text-primary);margin-bottom:8px;letter-spacing:.02em}
+  .benefit-desc{font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-secondary);line-height:1.6;letter-spacing:.02em}
+  .summary-bar{display:flex;align-items:center;justify-content:center;gap:var(--sp-l);padding:var(--sp-s) var(--sp-l);background:var(--bg-warm);border-radius:var(--radius-md);border:1px solid var(--border);margin-top:auto}
+  .summary-item{display:flex;align-items:center;gap:10px;font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-secondary)}
+  .summary-item .num{font-family:"Source Serif 4",serif;color:var(--accent);font-weight:600;font-size:var(--fs-sub)}
+  .summary-divider{width:1px;height:24px;background:var(--border)}
+  .slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header"><span class="section-num">07 · COST</span><h2 class="section-title">性价比</h2><span class="section-sub">基建即仓库，零外部依赖</span></div>
+  <div class="hero-area"><div class="hero-number">Git</div><div class="hero-label">仓库即基建，无需独立部署</div></div>
+  <div class="benefits-row">
+    <div class="benefit-card"><div class="benefit-icon">M</div><div class="benefit-title">纯 Markdown 文件</div><div class="benefit-desc">全部规则就是 .claude/ 下的普通文本文件，无需服务器、数据库、运行时。跟源代码一起提交到 Git，天然版本管理。</div></div>
+    <div class="benefit-card"><div class="benefit-icon">G</div><div class="benefit-title">Git 仓库即载体</div><div class="benefit-desc">规则与代码共存，每次修改都有 commit 记录。可追溯、可回滚、可协作。不依赖任何外部服务。</div></div>
+    <div class="benefit-card"><div class="benefit-icon">R</div><div class="benefit-title">跨项目可复用</div><div class="benefit-desc">.claude/ 目录结构标准化，复制到新项目即用。一套基建经验，多个项目受益，边际成本趋近于零。</div></div>
+  </div>
+  <div class="summary-bar"><div class="summary-item"><span class="num">0</span> 外部服务依赖</div><span class="summary-divider"></span><div class="summary-item"><span class="num">~15min</span> 新项目接入</div><span class="summary-divider"></span><div class="summary-item"><span class="num">Git</span> 版本管理 · 随代码迭代</div></div>
+  <div class="slide-number">07</div>
+</div>
+<script>
+if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform="scale("+s+")"}fit();window.addEventListener("resize",fit)})()}
+</script>
+</body>
+</html>

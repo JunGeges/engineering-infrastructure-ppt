@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>03 · 目录</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;padding:var(--sp-l) var(--sp-2xl) 44px;display:flex;flex-direction:column;justify-content:center}
+  .header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-l)}
+  .section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em}
+  .section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0}
+
+  .agenda-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 var(--sp-l);max-width:1500px}
+  .agenda-item{display:flex;align-items:flex-start;gap:var(--sp-m);padding:28px 0;border-bottom:1px solid var(--border);min-height:90px}
+  .item-num{font-family:"Source Serif 4","Newsreader",serif;font-size:44px;font-weight:600;color:var(--accent);line-height:1;min-width:56px;flex-shrink:0}
+  .item-text{flex:1;display:flex;flex-direction:column;justify-content:center}
+  .item-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-sub);font-weight:500;color:var(--text-primary);margin:0 0 4px 0;letter-spacing:-.005em}
+  .item-desc{font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-muted);line-height:1.5;margin:0}
+
+  .slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+</style></head>
+<body>
+<div class="slide">
+  <div class="header"><span class="section-num">03 · AGENDA</span><h2 class="section-title">目录</h2></div>
+
+  <div class="agenda-grid">
+    <div class="agenda-item"><div class="item-num">01</div><div class="item-text"><h3 class="item-title">项目基建全景</h3><p class="item-desc">问题 &amp; 价值 — 从隐性知识到显性规则</p></div></div>
+    <div class="agenda-item"><div class="item-num">02</div><div class="item-text"><h3 class="item-title">系统架构</h3><p class="item-desc">规则引擎 + 工具链 — 文件如何驱动 AI 行为</p></div></div>
+    <div class="agenda-item"><div class="item-num">03</div><div class="item-text"><h3 class="item-title">核心能力</h3><p class="item-desc">错题本 / 依赖图 / ADR — 三大知识资产</p></div></div>
+    <div class="agenda-item"><div class="item-num">04</div><div class="item-text"><h3 class="item-title">自动化命令</h3><p class="item-desc">/auto-dev &amp; /review — 从需求到代码的流水线</p></div></div>
+    <div class="agenda-item"><div class="item-num">05</div><div class="item-text"><h3 class="item-title">开发体验</h3><p class="item-desc">对比 &amp; 实际效果 — 效率提升的真实数据</p></div></div>
+    <div class="agenda-item"><div class="item-num">06</div><div class="item-text"><h3 class="item-title">落地指南</h3><p class="item-desc">启动 &amp; 演进 &amp; FAQ — 三步接入已有项目</p></div></div>
+  </div>
+
+  <div class="slide-number">03</div>
+</div>
+<script>if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform="scale("+s+")"}fit();window.addEventListener("resize",fit)})()}</script>
+</body>
+</html>

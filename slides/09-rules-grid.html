@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>09 · 规则引擎 9 文件</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+.slide{width:1920px;height:1080px;position:relative;padding:var(--sp-xl) var(--sp-2xl);display:flex;flex-direction:column}
+.header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-l)}
+.section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em}
+.section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0}
+.section-sub{margin-left:auto;font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-muted);letter-spacing:.04em}
+.rules-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:var(--sp-m);flex:1;margin-bottom:var(--sp-l)}
+.rule-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-m);display:flex;flex-direction:column;transition:border-color .3s}
+.rule-card-header{display:flex;align-items:center;gap:var(--sp-xs);margin-bottom:var(--sp-xs)}
+.color-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.rule-filename{font-family:"SF Mono","Cascadia Code","Menlo","Consolas",monospace;font-size:18px;font-weight:600;color:var(--text-primary);letter-spacing:-.01em}
+.rule-desc{font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-secondary);line-height:1.5;letter-spacing:.02em;flex:1;display:flex;align-items:center}
+.rule-tag{display:inline-block;font-family:-apple-system,sans-serif;font-size:12px;color:var(--text-muted);background:var(--bg-warm);padding:2px 8px;border-radius:999px;margin-top:auto;align-self:flex-start;letter-spacing:.04em}
+.footnote{text-align:center;font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-muted);letter-spacing:.06em;border-top:1px solid var(--border);padding-top:var(--sp-s)}
+.slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="slide">
+<div class="header"><span class="section-num">09 · RULES</span><h2 class="section-title">规则引擎 — 9 个文件</h2><span class="section-sub">.claude/rules/ 完整索引</span></div>
+<div class="rules-grid">
+<div class="rule-card"><div class="rule-card-header"><span class="color-dot" style="background:#D9774B"></span><span class="rule-filename">mistakes.md</span></div><div class="rule-desc">错题本：35 条避坑指南，改代码前必读。每条规则来自真实踩坑教训，AI 自动规避。</div><span class="rule-tag">35 条记录</span></div>
+<div class="rule-card"><div class="rule-card-header"><span class="color-dot" style="background:#6B8F71"></span><span class="rule-filename">coding-standards.md</span></div><div class="rule-desc">编码规范：命名 / 样式 / 路由 / 登录 / 组件拆分 / 交付前 10 项自检清单。</div><span class="rule-tag">12 项规范</span></div>
+<div class="rule-card"><div class="rule-card-header"><span class="color-dot" style="background:#D4A84B"></span><span class="rule-filename">dependency-map.md</span></div><div class="rule-desc">隐蔽依赖账本：47 条跨文件联动记录，修改全局状态 / 事件总线 / 底层组件前必查。</div><span class="rule-tag">47 条血缘</span></div>
+<div class="rule-card"><div class="rule-card-header"><span class="color-dot" style="background:#C96B6B"></span><span class="rule-filename">design.md</span></div><div class="rule-desc">视觉设计系统：色彩 / 间距 / 圆角 / 字体 / 阴影。Pencil 设计稿提取规范与落地转换规则。</div><span class="rule-tag">6 大规范维度</span></div>
+<div class="rule-card"><div class="rule-card-header"><span class="color-dot" style="background:#6B7FCF"></span><span class="rule-filename">decisions.md</span></div><div class="rule-desc">架构决策记录：9 条 ADR 记录关键 "为什么"。每条强制规则背后都有设计决策依据。</div><span class="rule-tag">9 条 ADR</span></div>
+<div class="rule-card"><div class="rule-card-header"><span class="color-dot" style="background:#7BBF8F"></span><span class="rule-filename">global-api.md</span></div><div class="rule-desc">全局 API 参考：网络请求 / 路由导航 / 提示交互 / 事件总线 / 高危操作 Vant Dialog 三步走。</div><span class="rule-tag">5 大 API 类别</span></div>
+<div class="rule-card"><div class="rule-card-header"><span class="color-dot" style="background:#B88B6B"></span><span class="rule-filename">apifox.md</span></div><div class="rule-desc">接口契约纪律：工具强制映射 / 上下文瘦身规范 / 编码实施约束，杜绝接口路径 404。</div><span class="rule-tag">3 条铁律</span></div>
+<div class="rule-card"><div class="rule-card-header"><span class="color-dot" style="background:#7F8C8D"></span><span class="rule-filename">project-overview.md</span></div><div class="rule-desc">项目总览：技术栈 / AppID / 路径别名 / 完整目录树 / 130+ 页面分布 / 15 个分包结构。</div><span class="rule-tag">技术栈全景</span></div>
+<div class="rule-card"><div class="rule-card-header"><span class="color-dot" style="background:#C58B9F"></span><span class="rule-filename">workflow-state.md</span></div><div class="rule-desc">开发流程引擎：TAPD 状态流转 / Git 提交规范 / CHANGELOG 管理 / 8 步闭环收尾流程。</div><span class="rule-tag">8 步闭环</span></div>
+</div>
+<div class="footnote">9 个规则文件 · ~70KB · 覆盖代码生成全生命周期</div>
+<div class="slide-number">09</div>
+</div>
+<script>
+if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform="scale("+s+")"}fit();window.addEventListener("resize",fit)})()}
+</script>
+</body>
+</html>

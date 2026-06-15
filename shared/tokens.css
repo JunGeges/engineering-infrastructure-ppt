@@ -1,0 +1,66 @@
+/* ══════════════════════════════════════════════════ */
+/* 数字赛场 · AI Native 研发基建 — Claude Code 风格  */
+/* 对标 Anthropic 设计语言                             */
+/* ══════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  /* ── 底色板 · 暖米系 ── */
+  --bg-page:     #FBFAF7;
+  --bg-card:     #FFFFFF;
+  --bg-warm:     #F5F0EA;
+  --border:      #EBE5DD;
+
+  /* ── 品牌锚点 · Anthropic Terracotta ── */
+  --accent:       #D9774B;
+  --accent-warm:  #C56B3F;
+  --accent-light: #F5EBE3;
+  --accent-subtle:#FBF4EF;
+
+  /* ── 文字 · 暖灰系 ── */
+  --text-primary:   #141413;
+  --text-secondary: #6B6560;
+  --text-muted:     #9E9790;
+  --text-on-dark:   #F0EDE8;
+
+  /* ── 间距阶梯 ── */
+  --sp-xs: 12px;
+  --sp-s:  24px;
+  --sp-m:  40px;
+  --sp-l:  64px;
+  --sp-xl: 96px;
+  --sp-2xl: 140px;
+
+  /* ── 字号阶梯 ── */
+  --fs-hero:   160px;
+  --fs-title:  72px;
+  --fs-sub:    36px;
+  --fs-body:   24px;
+  --fs-small:  18px;
+  --fs-tiny:   15px;
+
+  /* ── 圆角 ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
+
+body {
+  width: 1920px;
+  height: 1080px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: "Source Serif 4", "Newsreader", "Noto Serif SC", "STSong", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform-origin: 0 0;
+}
+
+/* 无衬线回退 — 用于 UI 元素 */
+.sans {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}

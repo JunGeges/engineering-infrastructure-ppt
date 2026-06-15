@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>01 · 封面</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide {
+    width: 1920px; height: 1080px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 var(--sp-2xl);
+    background:
+      radial-gradient(ellipse 800px 600px at 80% 25%, rgba(217,119,75,0.03) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 400px at 15% 80%, rgba(217,119,75,0.02) 0%, transparent 70%),
+      var(--bg-page);
+  }
+
+  /* 顶部技术标注 */
+  .tech-line {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: var(--fs-tiny);
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    margin-bottom: var(--sp-l);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-xs);
+  }
+  .tech-line .prompt {
+    color: var(--text-muted);
+  }
+  .tech-line .cursor {
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background: var(--accent);
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  /* 主要标题区 */
+  .title-block {
+    margin-bottom: var(--sp-l);
+    max-width: 960px;
+  }
+
+  .title-main {
+    font-family: "Source Serif 4", "Newsreader", serif;
+    font-size: var(--fs-hero);
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .title-sub {
+    font-family: "Source Serif 4", "Newsreader", serif;
+    font-size: 80px;
+    font-weight: 350;
+    line-height: 1.15;
+    color: var(--text-secondary);
+    margin: var(--sp-s) 0 0 0;
+    letter-spacing: 0.02em;
+  }
+
+  /* 分割线 */
+  .rule {
+    width: 180px;
+    height: 1px;
+    background: var(--accent);
+    margin: var(--sp-l) 0;
+    opacity: 0.55;
+  }
+
+  /* 描述语 */
+  .taglines {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: var(--fs-body);
+    color: var(--text-secondary);
+    line-height: 2;
+    letter-spacing: 0.04em;
+  }
+
+  /* 底部信息 */
+  .footer {
+    position: absolute;
+    bottom: 64px;
+    left: var(--sp-2xl);
+    right: var(--sp-2xl);
+    display: flex;
+    justify-content: space-between;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: var(--fs-tiny);
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* 右下角 Claude 标识 — 极淡水印 */
+  .watermark {
+    position: absolute;
+    bottom: 56px;
+    right: var(--sp-2xl);
+    font-family: "Newsreader", serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    opacity: 0.35;
+  }
+</style>
+</head>
+<body>
+
+<div class="slide">
+  <!-- 技术标注：模拟 Claude Code CLI -->
+  <div class="tech-line">
+    <span class="prompt">~/projects/digital-arena $</span>
+    <span>claude --resume<span class="cursor"></span></span>
+  </div>
+
+  <!-- 标题 -->
+  <div class="title-block">
+    <h1 class="title-main">数字赛场</h1>
+    <h2 class="title-sub">AI Native 研发基建</h2>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="taglines">
+    把隐性知识变成显性规则<br>
+    让 AI 成为你的专属开发专家
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer">
+    <span>数字赛场大研发团队</span>
+    <span>2026 年 6 月 · 内部技术分享</span>
+  </div>
+</div>
+
+<script>
+if (window.self === window.top) {
+  (function() {
+    var W = 1920, H = 1080;
+    function fit() {
+      var s = Math.min(window.innerWidth / W, window.innerHeight / H);
+      document.body.style.transform = 'scale(' + s + ')';
+    }
+    fit(); window.addEventListener('resize', fit);
+  })();
+}
+</script>
+
+</body>
+</html>

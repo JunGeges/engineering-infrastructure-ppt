@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>11 · 隐蔽依赖映射</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide { width:1920px; height:1080px; position:relative; padding:var(--sp-l) var(--sp-2xl) 44px; display:flex; flex-direction:column; }
+  .header { display:flex; align-items:baseline; gap:var(--sp-s); margin-bottom:var(--sp-m); }
+  .section-num { font-family:-apple-system,sans-serif; font-size:var(--fs-tiny); color:var(--accent); letter-spacing:0.1em; }
+  .section-title { font-family:"Source Serif 4","Newsreader",serif; font-size:var(--fs-title); font-weight:500; color:var(--text-primary); letter-spacing:-0.01em; margin:0; }
+  .section-sub { margin-left:auto; font-family:-apple-system,sans-serif; font-size:var(--fs-small); color:var(--text-muted); letter-spacing:0.04em; }
+  .dep-container { display:flex; gap:var(--sp-l); flex:1; }
+  .dep-left { flex:0 0 420px; display:flex; flex-direction:column; gap:var(--sp-s); justify-content:center; }
+  .dep-category { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:var(--sp-s) var(--sp-m); display:flex; align-items:center; gap:var(--sp-s); cursor:default; transition:border-color 0.3s,box-shadow 0.3s; }
+  .dep-category:hover { border-color:var(--accent); box-shadow:0 2px 12px rgba(217,119,75,0.08); }
+  .dep-cat-icon { width:42px; height:42px; border-radius:50%; background:var(--accent-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .dep-cat-icon span { font-family:-apple-system,sans-serif; font-size:12px; font-weight:600; color:var(--accent); }
+  .dep-cat-body { flex:1; }
+  .dep-cat-name { font-family:-apple-system,sans-serif; font-size:var(--fs-small); color:var(--text-primary); font-weight:600; }
+  .dep-cat-desc { font-family:-apple-system,sans-serif; font-size:14px; color:var(--text-muted); margin-top:2px; }
+  .dep-cat-count { font-family:"Source Serif 4",serif; font-size:28px; font-weight:600; color:var(--accent); flex-shrink:0; letter-spacing:-0.01em; }
+  .dep-cat-count small { font-size:14px; font-weight:400; opacity:0.6; margin-left:2px; }
+  .dep-right { flex:1; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:var(--sp-m); display:flex; flex-direction:column; gap:2px; justify-content:center; overflow:hidden; }
+  .conn-row { display:flex; align-items:center; gap:var(--sp-xs); padding:4px 0; }
+  .conn-source { font-family:-apple-system,sans-serif; font-size:14px; font-weight:500; color:var(--text-primary); flex:0 0 150px; text-align:right; }
+  .conn-line { flex:0 0 50px; height:1px; background:var(--accent); opacity:0.45; position:relative; }
+  .conn-line::after { content:''; position:absolute; right:-4px; top:-3px; width:7px; height:7px; background:var(--accent); border-radius:50%; opacity:0.6; }
+  .conn-target { font-family:-apple-system,sans-serif; font-size:14px; color:var(--text-secondary); flex:1; }
+  .conn-target em { font-style:normal; color:var(--text-muted); font-size:12px; }
+  .conn-target .warn { color:#D9774B; font-weight:500; }
+  .group-divider { height:1px; background:var(--border); margin:4px 0; }
+  .conn-label { font-family:-apple-system,sans-serif; font-size:12px; color:var(--text-muted); letter-spacing:0.06em; margin-bottom:1px; padding-left:150px; }
+  .slide-number { position:absolute; bottom:44px; right:var(--sp-2xl); font-family:-apple-system,sans-serif; font-size:var(--fs-tiny); color:var(--text-muted); letter-spacing:0.06em; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <span class="section-num">11 · DEPENDENCY</span>
+    <h2 class="section-title">隐蔽依赖：改 A 时知道 B 会受影响</h2>
+    <span class="section-sub">跨文件血缘关系映射</span>
+  </div>
+  <div class="dep-container">
+    <div class="dep-left">
+      <div class="dep-category"><div class="dep-cat-icon"><span>ST</span></div><div class="dep-cat-body"><div class="dep-cat-name">全局 Storage 数据流向</div><div class="dep-cat-desc">user token 被 20+ 文件读取</div></div><div class="dep-cat-count">5<small>条</small></div></div>
+      <div class="dep-category"><div class="dep-cat-icon"><span>EB</span></div><div class="dep-cat-body"><div class="dep-cat-name">事件总线发布 / 订阅</div><div class="dep-cat-desc">含 4 条孤立订阅警告</div></div><div class="dep-cat-count">17<small>条</small></div></div>
+      <div class="dep-category"><div class="dep-cat-icon"><span>SM</span></div><div class="dep-cat-body"><div class="dep-cat-name">STATUS_MAP 硬编码</div><div class="dep-cat-desc">4 处需同步更新</div></div><div class="dep-cat-count">4<small>处</small></div></div>
+      <div class="dep-category"><div class="dep-cat-icon"><span>RT</span></div><div class="dep-cat-body"><div class="dep-cat-name">高危路由引用</div><div class="dep-cat-desc">4 个页面被 12-14 处引用</div></div><div class="dep-cat-count">4<small>页</small></div></div>
+      <div class="dep-category"><div class="dep-cat-icon"><span>CP</span></div><div class="dep-cat-body"><div class="dep-cat-name">底层组件影响面</div><div class="dep-cat-desc">4 个组件被 25-33 处使用</div></div><div class="dep-cat-count">4<small>个</small></div></div>
+    </div>
+    <div class="dep-right">
+      <div class="conn-label">STORAGE</div>
+      <div class="conn-row"><span class="conn-source">user token</span><span class="conn-line"></span><span class="conn-target"><em>20+ 文件</em> pages/starHome/, activity/, court/, ball-game/ ...</span></div>
+      <div class="conn-row"><span class="conn-source">pay_success_flag</span><span class="conn-line"></span><span class="conn-target">一次性信号，两端同步修改</span></div>
+      <div class="conn-row"><span class="conn-source">photoIds</span><span class="conn-line"></span><span class="conn-target">组件间 storage 传参而非 props</span></div>
+      <div class="group-divider"></div>
+      <div class="conn-label">EVENT BUS <span class="warn">(含孤立订阅)</span></div>
+      <div class="conn-row"><span class="conn-source">mergeVideoOver</span><span class="conn-line"></span><span class="conn-target"><em>10 个订阅者</em> video-clip, 5v5, make-highlight</span></div>
+      <div class="conn-row"><span class="conn-source">qiuJuPaySuccess</span><span class="conn-line"></span><span class="conn-target"><em>3 处 pub</em> &rarr; my-ball-game, half-game-section</span></div>
+      <div class="conn-row"><span class="conn-source">loadHelp</span><span class="conn-line"></span><span class="conn-target"><span class="warn">孤立订阅</span> 无发布者，页面已下线</span></div>
+      <div class="group-divider"></div>
+      <div class="conn-label">STATUS_MAP</div>
+      <div class="conn-row"><span class="conn-source">BallGameStatusMap</span><span class="conn-line"></span><span class="conn-target">constant.js <em>共享定义</em> + 4 处独立副本</span></div>
+      <div class="conn-row"><span class="conn-source">键格式不统一</span><span class="conn-line"></span><span class="conn-target">数字键 vs 命名键，<span class="warn">新增状态必须同步 4 处</span></span></div>
+      <div class="group-divider"></div>
+      <div class="conn-label">ROUTING &amp; COMPONENTS</div>
+      <div class="conn-row"><span class="conn-source">star 详情页</span><span class="conn-line"></span><span class="conn-target"><em>14 处</em> app.navTo 引用</span></div>
+      <div class="conn-row"><span class="conn-source">custom-nav-bar</span><span class="conn-line"></span><span class="conn-target"><em>33 处</em> 使用，接口变更影响 1/4 页面</span></div>
+      <div class="conn-row"><span class="conn-source">uploader</span><span class="conn-line"></span><span class="conn-target"><em>32 处</em> 使用，影响所有表单页</span></div>
+    </div>
+  </div>
+  <div class="slide-number">11</div>
+</div>
+<script>
+if (window.self === window.top) {
+  (function() {
+    var W = 1920, H = 1080;
+    function fit() {
+      var s = Math.min(window.innerWidth / W, window.innerHeight / H);
+      document.body.style.transform = 'scale(' + s + ')';
+    }
+    fit(); window.addEventListener('resize', fit);
+  })();
+}
+</script>
+</body>
+</html>

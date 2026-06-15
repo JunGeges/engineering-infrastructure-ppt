@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>14 · /review 10 维度审查</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide { width:1920px; height:1080px; position:relative; padding:var(--sp-xl) var(--sp-2xl); display:flex; flex-direction:column; }
+  .header { display:flex; align-items:baseline; gap:var(--sp-s); margin-bottom:var(--sp-l); }
+  .section-num { font-family:-apple-system,sans-serif; font-size:var(--fs-tiny); color:var(--accent); letter-spacing:0.1em; }
+  .section-title { font-family:"Source Serif 4","Newsreader",serif; font-size:var(--fs-title); font-weight:500; color:var(--text-primary); letter-spacing:-0.01em; margin:0; }
+  .section-sub { margin-left:auto; font-family:-apple-system,sans-serif; font-size:var(--fs-small); color:var(--text-muted); letter-spacing:0.04em; }
+  .review-grid { flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr 1fr 1fr 1fr; gap:var(--sp-s); }
+  .review-item { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:var(--sp-s) var(--sp-m); display:flex; align-items:center; gap:var(--sp-s); transition:border-color 0.3s,box-shadow 0.3s; }
+  .review-item:hover { border-color:var(--accent); box-shadow:0 2px 12px rgba(217,119,75,0.06); }
+  .review-badge { width:44px; height:44px; border-radius:50%; background:var(--accent-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .review-badge span { font-family:"Source Serif 4",serif; font-size:20px; font-weight:600; color:var(--accent); }
+  .review-info { flex:1; }
+  .review-name { font-family:-apple-system,sans-serif; font-size:20px; font-weight:600; color:var(--text-primary); letter-spacing:0.02em; }
+  .review-desc { font-family:-apple-system,sans-serif; font-size:15px; color:var(--text-muted); margin-top:2px; }
+  .review-check { width:28px; height:28px; border-radius:50%; border:2px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--text-muted); font-size:16px; }
+  .slide-number { position:absolute; bottom:44px; right:var(--sp-2xl); font-family:-apple-system,sans-serif; font-size:var(--fs-tiny); color:var(--text-muted); letter-spacing:0.06em; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <span class="section-num">14 · REVIEW</span>
+    <h2 class="section-title">/review &mdash; 10 维度代码审查</h2>
+    <span class="section-sub">提交前自检清单</span>
+  </div>
+  <div class="review-grid">
+    <div class="review-item">
+      <div class="review-badge"><span>1</span></div>
+      <div class="review-info">
+        <div class="review-name">路由规范</div>
+        <div class="review-desc">app.navTo 不直调原生 wx.navigateTo</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+    <div class="review-item">
+      <div class="review-badge"><span>2</span></div>
+      <div class="review-info">
+        <div class="review-name">提示规范</div>
+        <div class="review-desc">app.msg 不调 wx.showToast</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+    <div class="review-item">
+      <div class="review-badge"><span>3</span></div>
+      <div class="review-info">
+        <div class="review-name">事件清理</div>
+        <div class="review-desc">sub/cancel 成对检查</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+    <div class="review-item">
+      <div class="review-badge"><span>4</span></div>
+      <div class="review-info">
+        <div class="review-name">接口路径</div>
+        <div class="review-desc">不以 api/ 开头</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+    <div class="review-item">
+      <div class="review-badge"><span>5</span></div>
+      <div class="review-info">
+        <div class="review-name">组件路径</div>
+        <div class="review-desc">Vant 绝对路径检查</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+    <div class="review-item">
+      <div class="review-badge"><span>6</span></div>
+      <div class="review-info">
+        <div class="review-name">颜色规范</div>
+        <div class="review-desc">仅使用全局 CSS 变量</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+    <div class="review-item">
+      <div class="review-badge"><span>7</span></div>
+      <div class="review-info">
+        <div class="review-name">间距规范</div>
+        <div class="review-desc">4rpx 倍数对齐</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+    <div class="review-item">
+      <div class="review-badge"><span>8</span></div>
+      <div class="review-info">
+        <div class="review-name">文案保真</div>
+        <div class="review-desc">无 Lorem Ipsum 占位符</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+    <div class="review-item">
+      <div class="review-badge"><span>9</span></div>
+      <div class="review-info">
+        <div class="review-name">JSON 声明</div>
+        <div class="review-desc">van-dialog 等组件挂载</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+    <div class="review-item">
+      <div class="review-badge"><span>10</span></div>
+      <div class="review-info">
+        <div class="review-name">WXML 语法</div>
+        <div class="review-desc">无 ?. 可选链 / 原生方法</div>
+      </div>
+      <div class="review-check">&#10003;</div>
+    </div>
+  </div>
+  <div class="slide-number">14</div>
+</div>
+<script>
+if (window.self === window.top) {
+  (function() {
+    var W = 1920, H = 1080;
+    function fit() {
+      var s = Math.min(window.innerWidth / W, window.innerHeight / H);
+      document.body.style.transform = 'scale(' + s + ')';
+    }
+    fit(); window.addEventListener('resize', fit);
+  })();
+}
+</script>
+</body>
+</html>

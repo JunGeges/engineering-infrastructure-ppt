@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>12 · 架构决策 ADR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide { width:1920px; height:1080px; position:relative; padding:var(--sp-xl) var(--sp-2xl); display:flex; flex-direction:column; }
+  .header { display:flex; align-items:baseline; gap:var(--sp-s); margin-bottom:var(--sp-l); }
+  .section-num { font-family:-apple-system,sans-serif; font-size:var(--fs-tiny); color:var(--accent); letter-spacing:0.1em; }
+  .section-title { font-family:"Source Serif 4","Newsreader",serif; font-size:var(--fs-title); font-weight:500; color:var(--text-primary); letter-spacing:-0.01em; margin:0; }
+  .section-sub { margin-left:auto; font-family:-apple-system,sans-serif; font-size:var(--fs-small); color:var(--text-muted); letter-spacing:0.04em; }
+  .adr-container { display:flex; gap:var(--sp-l); flex:1; }
+  .adr-left { flex:0 0 480px; overflow-y:auto; display:flex; flex-direction:column; gap:6px; justify-content:center; }
+  .adr-item { display:flex; align-items:center; gap:var(--sp-s); padding:10px var(--sp-s); border-radius:var(--radius-md); border:1px solid var(--border); background:var(--bg-card); transition:border-color 0.3s,box-shadow 0.3s; cursor:default; }
+  .adr-item:hover { border-color:var(--accent); box-shadow:0 2px 8px rgba(217,119,75,0.06); }
+  .adr-num { font-family:-apple-system,sans-serif; font-size:13px; font-weight:600; color:var(--accent); flex-shrink:0; width:60px; letter-spacing:0.05em; }
+  .adr-text { font-family:-apple-system,sans-serif; font-size:15px; color:var(--text-secondary); flex:1; line-height:1.3; }
+  .adr-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); opacity:0.3; flex-shrink:0; }
+  .adr-right { flex:1; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:var(--sp-m) var(--sp-l); display:flex; flex-direction:column; gap:var(--sp-m); justify-content:center; }
+  .adr-card { }
+  .adr-card-title { font-family:"Source Serif 4",serif; font-size:var(--fs-sub); font-weight:500; color:var(--text-primary); margin-bottom:var(--sp-s); letter-spacing:-0.01em; }
+  .adr-card-title .anum { color:var(--accent); }
+  .adr-three { display:flex; flex-direction:column; gap:var(--sp-xs); }
+  .adr-field { display:flex; gap:var(--sp-xs); }
+  .adr-field-label { font-family:-apple-system,sans-serif; font-size:15px; font-weight:600; color:var(--accent); flex-shrink:0; width:50px; }
+  .adr-field-text { font-family:-apple-system,sans-serif; font-size:15px; color:var(--text-secondary); line-height:1.5; }
+  .adr-field-text em { font-style:normal; color:var(--text-muted); font-size:14px; }
+  .slide-number { position:absolute; bottom:44px; right:var(--sp-2xl); font-family:-apple-system,sans-serif; font-size:var(--fs-tiny); color:var(--text-muted); letter-spacing:0.06em; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <span class="section-num">12 · DECISIONS</span>
+    <h2 class="section-title">设计决策记录：知道为什么这么做</h2>
+    <span class="section-sub">9 条架构决策记录 (ADR)</span>
+  </div>
+  <div class="adr-container">
+    <div class="adr-left">
+      <div class="adr-item"><span class="adr-num">ADR-001</span><span class="adr-text">禁止 app.post 使用 api/ 前缀</span><span class="adr-dot"></span></div>
+      <div class="adr-item"><span class="adr-num">ADR-002</span><span class="adr-text">路由统一使用 app.navTo</span><span class="adr-dot"></span></div>
+      <div class="adr-item"><span class="adr-num">ADR-003</span><span class="adr-text">提示统一使用 app.msg</span><span class="adr-dot"></span></div>
+      <div class="adr-item"><span class="adr-num">ADR-004</span><span class="adr-text">全局状态用 Storage 而非 globalData</span><span class="adr-dot"></span></div>
+      <div class="adr-item"><span class="adr-num">ADR-005</span><span class="adr-text">高危操作必须 Vant Dialog 三步走</span><span class="adr-dot"></span></div>
+      <div class="adr-item"><span class="adr-num">ADR-006</span><span class="adr-text">WXML 禁止使用 JS 可选链</span><span class="adr-dot"></span></div>
+      <div class="adr-item"><span class="adr-num">ADR-007</span><span class="adr-text">事件总线 sub/cancel 必须成对</span><span class="adr-dot"></span></div>
+      <div class="adr-item"><span class="adr-num">ADR-008</span><span class="adr-text">训练页使用独立暗色主题</span><span class="adr-dot"></span></div>
+      <div class="adr-item"><span class="adr-num">ADR-009</span><span class="adr-text">接口参数必须与 Spec 一致</span><span class="adr-dot"></span></div>
+    </div>
+    <div class="adr-right">
+      <div class="adr-card">
+        <div class="adr-card-title"><span class="anum">ADR-005</span> 高危操作必须 Vant Dialog 三步走</div>
+        <div class="adr-three">
+          <div class="adr-field"><span class="adr-field-label">决策</span><span class="adr-field-text">删除、注销、退出等不可逆操作，必须走 JS 调用 + JSON 声明 + WXML 挂载三段式</span></div>
+          <div class="adr-field"><span class="adr-field-label">原因</span><span class="adr-field-text">wx.showModal 样式不可定制，无品牌统一性；Vant Dialog 的 await Dialog.confirm() 提供清晰的 async/await 流程控制</span></div>
+          <div class="adr-field"><span class="adr-field-label">影响</span><span class="adr-field-text">每新增高危操作页面必须挂载 &lt;van-dialog id="van-dialog" /&gt;，JSON 声明 Vant 组件</span></div>
+        </div>
+      </div>
+      <div class="adr-card">
+        <div class="adr-card-title"><span class="anum">ADR-002</span> 路由统一使用 app.navTo</div>
+        <div class="adr-three">
+          <div class="adr-field"><span class="adr-field-label">决策</span><span class="adr-field-text">所有页面跳转必须通过 app.navTo()，禁止直接调用 wx.navigateTo / wx.navigateBack</span></div>
+          <div class="adr-field"><span class="adr-field-label">原因</span><span class="adr-field-text">app.navTo 封装了参数序列化、登录态校验和全局拦截逻辑。直接调用会绕过这些保护</span></div>
+          <div class="adr-field"><span class="adr-field-label">影响</span><span class="adr-field-text">跳转时参数 key 必须与目标页 onLoad(options) 解构一致</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">12</div>
+</div>
+<script>
+if (window.self === window.top) {
+  (function() {
+    var W = 1920, H = 1080;
+    function fit() {
+      var s = Math.min(window.innerWidth / W, window.innerHeight / H);
+      document.body.style.transform = 'scale(' + s + ')';
+    }
+    fit(); window.addEventListener('resize', fit);
+  })();
+}
+</script>
+</body>
+</html>

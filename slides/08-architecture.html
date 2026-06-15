@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>08 · 系统架构全景</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css">
+<style>
+  .slide{width:1920px;height:1080px;position:relative;padding:var(--sp-l) var(--sp-2xl) 44px;display:flex;flex-direction:column}
+  .header{display:flex;align-items:baseline;gap:var(--sp-s);margin-bottom:var(--sp-s)}
+  .section-num{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.1em}
+  .section-title{font-family:"Source Serif 4","Newsreader",serif;font-size:var(--fs-title);font-weight:500;color:var(--text-primary);letter-spacing:-.01em;margin:0}
+
+  .main{display:flex;gap:var(--sp-l);flex:1}
+  .tree-col{flex:1;display:flex;flex-direction:column;justify-content:center}
+  .note-col{width:380px;display:flex;flex-direction:column;justify-content:center;gap:var(--sp-m)}
+
+  /* 目录树 */
+  .tree{font-family:"SF Mono","Fira Code","Cascadia Code","Consolas",monospace;font-size:15px;line-height:1.85;color:var(--text-primary);letter-spacing:.02em}
+  .tree .dir{color:#6A8CAF}
+  .tree .file{color:var(--text-secondary)}
+  .tree .comment{color:var(--text-muted);font-style:italic;margin-left:8px}
+  .tree .tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:12px;line-height:1.5;vertical-align:middle;margin-right:4px;font-family:-apple-system,sans-serif;font-style:normal;letter-spacing:0}
+  .tree .tag-red{background:#FDE8E8;color:#C53030}
+  .tree .tag-green{background:#E6F4EA;color:#1B7A3D}
+  .tree .tag-amber{background:#FEF3C7;color:#B45309}
+  .tree .tag-blue{background:#DBEAFE;color:#1E40AF}
+  .tree .tag-purple{background:#EDE9FE;color:#6B21A8}
+  .tree .tag-gray{background:#F3F4F6;color:#4B5563}
+  .tree .branch{color:var(--border)}
+  .tree .root{font-weight:600;color:var(--text-primary)}
+
+  /* 右侧注释卡片 */
+  .note-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--sp-s) var(--sp-m)}
+  .note-label{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--accent);letter-spacing:.08em;margin-bottom:4px}
+  .note-text{font-family:-apple-system,sans-serif;font-size:var(--fs-small);color:var(--text-secondary);line-height:1.5}
+  .note-text strong{color:var(--text-primary)}
+  .stat-row{display:flex;gap:var(--sp-s);margin-top:var(--sp-xs)}
+  .stat-item{font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted)}
+  .stat-item em{font-style:normal;color:var(--accent);font-weight:600;font-size:var(--fs-body)}
+
+  .slide-number{position:absolute;bottom:44px;right:var(--sp-2xl);font-family:-apple-system,sans-serif;font-size:var(--fs-tiny);color:var(--text-muted);letter-spacing:.06em}
+</style></head>
+<body>
+<div class="slide">
+  <div class="header"><span class="section-num">08 · STRUCTURE</span><h2 class="section-title">系统架构全景</h2></div>
+
+  <div class="main">
+    <!-- 目录树 -->
+    <div class="tree-col">
+<pre class="tree"><span class="root">app/</span>
+<span class="branch">├──</span> <span class="file">CLAUDE.md</span>                        <span class="comment">AI 总指令入口</span>
+<span class="branch">├──</span> <span class="file">.mcp.json</span>                        <span class="comment">4 套 MCP 配置</span>
+<span class="branch">├──</span> <span class="file">CHANGELOG.md</span>                     <span class="comment">更新日志</span>
+<span class="branch">├──</span> <span class="file">qiuxin.sql</span>                       <span class="comment">173 张表 Schema</span>
+<span class="branch">│</span>
+<span class="branch">└──</span> <span class="dir">.claude/</span>                          <span class="comment">项目基建根目录</span>
+    <span class="branch">│</span>
+    <span class="branch">├──</span> <span class="dir">rules/</span>                         <span class="comment">规则引擎 — 9 文件 · ~70KB</span>
+    <span class="branch">│</span>   <span class="branch">├──</span> <span class="tag tag-red">错</span><span class="file">mistakes.md</span>             <span class="comment">35 条避坑 · 改代码前必读</span>
+    <span class="branch">│</span>   <span class="branch">├──</span> <span class="tag tag-green">规</span><span class="file">coding-standards.md</span>     <span class="comment">命名/路由/登录/自检</span>
+    <span class="branch">│</span>   <span class="branch">├──</span> <span class="tag tag-amber">依</span><span class="file">dependency-map.md</span>       <span class="comment">47 条跨文件联动</span>
+    <span class="branch">│</span>   <span class="branch">├──</span> <span class="tag tag-purple">设</span><span class="file">design.md</span>               <span class="comment">色彩/间距/圆角/字体</span>
+    <span class="branch">│</span>   <span class="branch">├──</span> <span class="tag tag-blue">策</span><span class="file">decisions.md</span>            <span class="comment">9 条 ADR · 记录"为什么"</span>
+    <span class="branch">│</span>   <span class="branch">├──</span> <span class="tag tag-gray">API</span><span class="file">global-api.md</span>            <span class="comment">网络/导航/事件总线</span>
+    <span class="branch">│</span>   <span class="branch">├──</span> <span class="tag tag-gray">API</span><span class="file">apifox.md</span>               <span class="comment">接口契约 & 工具字典</span>
+    <span class="branch">│</span>   <span class="branch">├──</span> <span class="tag tag-gray">概</span><span class="file">project-overview.md</span>     <span class="comment">技术栈/AppID/目录树</span>
+    <span class="branch">│</span>   <span class="branch">└──</span> <span class="tag tag-gray">流</span><span class="file">workflow-state.md</span>       <span class="comment">TAPD 流转/Git 提交</span>
+    <span class="branch">│</span>
+    <span class="branch">├──</span> <span class="dir">commands/</span>                      <span class="comment">自定义命令 — 2 个</span>
+    <span class="branch">│</span>   <span class="branch">├──</span> <span class="file">auto-dev.md</span>                 <span class="comment">四阶段自动编码引擎</span>
+    <span class="branch">│</span>   <span class="branch">└──</span> <span class="file">review.md</span>                   <span class="comment">10 维度代码审查</span>
+    <span class="branch">│</span>
+    <span class="branch">├──</span> <span class="dir">scripts/</span>                       <span class="comment">自动化脚本</span>
+    <span class="branch">│</span>   <span class="branch">└──</span> <span class="file">vision.js</span>                   <span class="comment">图灵识别 · 阿里云百炼 Qwen VL</span>
+    <span class="branch">│</span>
+    <span class="branch">├──</span> <span class="dir">skills/</span>                        <span class="comment">通用技能包 → .agents/skills/</span>
+    <span class="branch">├──</span> <span class="dir">plan/</span>                          <span class="comment">方案归档 · 中文命名 .md</span>
+    <span class="branch">└──</span> <span class="dir">_temp/</span>                         <span class="comment">临时文件 · 用完即删</span></pre>
+    </div>
+
+    <!-- 右侧注释 -->
+    <div class="note-col">
+      <div class="note-card">
+        <div class="note-label">工作流</div>
+        <div class="note-text"><strong>CLAUDE.md</strong> 是 AI 的入口 → 指向 9 个 rules/ 文件 → 每个文件在需要时按优先级加载。<br><br>不需要一次性全部读入，AI 按场景选择：改代码读 mistakes，查接口读 apifox，写 UI 读 design。</div>
+      </div>
+      <div class="note-card">
+        <div class="note-label">数据源接入</div>
+        <div class="note-text"><strong>.mcp.json</strong> 定义 4 套外部数据源：TAPD（任务）、Apifox（接口）、Pencil（设计稿）、Stitch（UI 生成）。<br><br><strong>qiuxin.sql</strong> 提供 173 张表的字段语义，接口字段溯源唯一权威来源。</div>
+      </div>
+      <div class="note-card">
+        <div class="note-label">核心数据</div>
+        <div class="stat-row">
+          <span class="stat-item"><em>9</em> 规则文件</span>
+          <span class="stat-item"><em>2</em> 自定义命令</span>
+          <span class="stat-item"><em>4</em> MCP 工具</span>
+        </div>
+        <div class="stat-row" style="margin-top:8px">
+          <span class="stat-item"><em>~70KB</em> 规则知识</span>
+          <span class="stat-item"><em>35</em> 条错题记录</span>
+          <span class="stat-item"><em>173</em> 张数据表</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-number">08</div>
+</div>
+<script>if(window.self===window.top){(function(){var W=1920,H=1080;function fit(){var s=Math.min(window.innerWidth/W,window.innerHeight/H);document.body.style.transform="scale("+s+")"}fit();window.addEventListener("resize",fit)})()}</script>
+</body>
+</html>
